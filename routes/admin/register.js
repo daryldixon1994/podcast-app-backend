@@ -1,6 +1,8 @@
 const Admin = require("../../models/Admin");
 const bcrypt = require("bcrypt");
-const { RegisterValidation } = require("../../utils/RegisterValidation");
+const {
+  AdminRegisterValidation,
+} = require("../../utils/AdminRegisterValidation");
 // const nodemailer = require("nodemailer");
 // const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD;
 // const EMAIL = process.env.EMAIL;
@@ -9,7 +11,7 @@ require("dotenv").config();
 module.exports = async (req, res) => {
   try {
     let { email, password, adminName, confirm_password } = req.body;
-    let { error } = RegisterValidation({
+    let { error } = AdminRegisterValidation({
       email,
       adminName,
       password,

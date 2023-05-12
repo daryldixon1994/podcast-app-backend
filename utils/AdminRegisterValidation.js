@@ -2,11 +2,11 @@ const Joi = require("joi");
 
 const RegisterValidation = (data) => {
   const schema = Joi.object({
-    userName: Joi.string().empty().required().min(4).messages({
-      "string.empty": "Username should not be an empty field",
-      "string.base": "Username must be a string",
-      "string.min": "Username length must be at least 4 characters long",
-      "any.required": "Username is a required field",
+    adminName: Joi.string().empty().required().min(4).messages({
+      "string.empty": "AdminName should not be an empty field",
+      "string.base": "AdminName must be a string",
+      "string.min": "AdminName length must be at least 4 characters long",
+      "any.required": "AdminName is a required field",
     }),
     email: Joi.string()
       .empty()
