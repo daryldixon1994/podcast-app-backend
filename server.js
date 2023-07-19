@@ -8,7 +8,11 @@ const path = require("path");
 const PORT = 5000 || process.env.PORT;
 //connect to database
 connect();
-app.use(cors());
+let corsOptions = {
+  origin: "https://podcast-app-fqku.onrender.com",
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+app.use(cors(corsOptions));
 
 //express json middleware
 app.use(express.json());
@@ -18,22 +22,21 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/audios", express.static(path.join(__dirname, "audios")));
 
 //cors
-app.use((_req, res, next) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://podcast-app-fqku.onrender.com"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Api-Key, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.header(
-    "Access-Control-Allow-Methods",
-    "POST, PUT, PATCH, GET, DELETE, OPTIONS"
-  );
+// app.use((_req, res, next) => {
+//   res.header({
+//     "Access-Control-Allow-Origin": "https://podcast-app-fqku.onrender.com",
+//   });
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Api-Key, X-Requested-With, Content-Type, Accept, Authorization"
+//   );
+//   res.header(
+//     "Access-Control-Allow-Methods",
+//     "POST, PUT, PATCH, GET, DELETE, OPTIONS"
+//   );
 
-  next();
-});
+//   next();
+// });
 //user middleware
 app.use("/api/user", require("./routes/user"));
 
