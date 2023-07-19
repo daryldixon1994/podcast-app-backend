@@ -8,13 +8,17 @@ const path = require("path");
 const PORT = 5000 || process.env.PORT;
 //connect to database
 connect();
-let corsOptions = {
-  origin: "*",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-};
-app.use(cors(corsOptions));
+// let corsOptions = {
+//   origin: "http://localhost:3000",
+//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   preflightContinue: false,
+//   optionsSuccessStatus: 204,
+// };
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
 
 //express json middleware
 app.use(express.json());
