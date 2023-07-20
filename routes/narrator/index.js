@@ -12,6 +12,9 @@ router.post("/login", require("./login"));
 //verify email : /api/narrator/verifyEmail
 router.put("/verifyEmail", require("./verifyEmail"));
 
+//get profile : /api/narrator/profile/:id
+router.put("/profile/:id", require("./getProfile"));
+
 //add podcast: /api/narrator/addPodcast
 router.post(
   "/addPodcast",
