@@ -13,7 +13,7 @@ router.post("/login", require("./login"));
 router.put("/verifyEmail", require("./verifyEmail"));
 
 //get profile : /api/narrator/profile/:id
-router.put("/profile/:id", require("./getProfile"));
+router.get("/profile/:id", require("./getProfile"));
 
 //add podcast: /api/narrator/addPodcast
 router.post(
