@@ -18,7 +18,7 @@ const podcastSchema = new mongoose.Schema(
       default: "/audioUploads",
     },
     category: {
-      type: String,
+      type: [String],
       required: true,
     },
     tags: {
