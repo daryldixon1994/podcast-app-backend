@@ -25,13 +25,9 @@ module.exports = async (req, res) => {
         category,
         tags: tags.split(","),
         episodeNumber,
-        audioURL: `${req.protocol}://${req.get("host")}/audios/${
-          audio[0].filename
-        }`,
+        audioURL: `https://podcast-app-fqku.onrender.com/audios/${audio[0].filename}`,
         narrator: id,
-        podcastImage: `${req.protocol}://${req.get("host")}/uploads/${
-          photo[0].filename
-        }`,
+        podcastImage: `https://podcast-app-fqku.onrender.com/uploads/${photo[0].filename}`,
         duration,
       });
       const podcast = await newPodcast.save();
