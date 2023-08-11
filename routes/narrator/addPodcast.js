@@ -32,6 +32,7 @@ module.exports = async (req, res) => {
         podcastImage: `${req.protocol}://${req.get("host")}/uploads/${
           photo[0].filename
         }`,
+        duration,
       });
       const podcast = await newPodcast.save();
       return res.status(200).json({
@@ -39,7 +40,7 @@ module.exports = async (req, res) => {
         message: "you has been added successfully",
         data: podcast,
       });
-    } else if (!req.files.photo) {
+    } else if (!req.files.photo && req.files.audio) {
       const newPodcast = await new Podcast({
         title,
         desc,
@@ -48,6 +49,7 @@ module.exports = async (req, res) => {
         audioURL,
         narrator: id,
         podcastImage: "/uploads/addPhoto.jpg",
+        duration,
       });
       const podcast = await newPodcast.save();
       return res.status(200).json({

@@ -37,6 +37,9 @@ const podcastSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Narrator",
     },
+    duration: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
