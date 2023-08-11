@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
         title,
         desc,
         category,
-        tags,
+        tags: tags.split(","),
         episodeNumber,
         audioURL: `https://podcast-app-fqku.onrender.com/audios/${audio[0].filename}`,
         narrator: id,
