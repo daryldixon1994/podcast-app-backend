@@ -1,4 +1,8 @@
 const Podcast = require("../../models/Podcast");
+const FsFiles = require("../../models/fs.files");
+const FsChunks = require("../../models/fs.chunks");
+var fs = require("fs");
+var path = require("path");
 // const cloudinary = require("../../middlewares/cloudinary");
 const { getAudioDurationInSeconds } = require("get-audio-duration");
 // const fs = require("fs");
@@ -16,18 +20,32 @@ module.exports = async (req, res) => {
       });
     }
     if (req.files.photo && req.files.audio) {
-      // const { path } = req.file;
-      // const { url } = await uploader(path);
-      // fs.unlinkSync(path);
+      const imgBuffer = fs.readFileSync(
+        path.join(
+          "D:/Dévelopement WEB/WBpodcastBackend/" +
+            "/uploads/" +
+            photo[0].filename
+        )
+      );
+      const base64Image = imgBuffer.toString("base64");
+
+      let data = fs.readFileSync(
+        path.join(
+          "D:/Dévelopement WEB/WBpodcastBackend/" +
+            "/audios/" +
+            audio[0].filename
+        )
+      );
+      const base64Audio = data.toString("base64");
       const newPodcast = await new Podcast({
         title,
         desc,
         category,
         tags: tags.split(","),
         episodeNumber,
-        audioURL: `https://podcast-app-fqku.onrender.com/audios/${audio[0].filename}`,
+        audioURL: base64Audio,
         narrator: id,
-        podcastImage: `https://podcast-app-fqku.onrender.com/uploads/${photo[0].filename}`,
+        podcastImage: base64Image,
         duration,
       });
       const podcast = await newPodcast.save();
@@ -42,7 +60,7 @@ module.exports = async (req, res) => {
         desc,
         category,
         episodeNumber,
-        audioURL,
+        audioURL: `https://podcast-app-fqku.onrender.com/audios/${audio[0].filename}`,
         narrator: id,
         podcastImage: "/uploads/addPhoto.jpg",
         duration,

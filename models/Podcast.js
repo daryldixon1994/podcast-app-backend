@@ -8,6 +8,7 @@ const podcastSchema = new mongoose.Schema(
     },
     podcastImage: {
       type: String,
+      // contentType: String,
     },
     desc: {
       type: String,
@@ -15,7 +16,6 @@ const podcastSchema = new mongoose.Schema(
     },
     audioURL: {
       type: String,
-      default: "/audioUploads",
     },
     category: {
       type: [String],
