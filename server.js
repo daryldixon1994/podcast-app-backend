@@ -16,7 +16,7 @@ connect();
 // };
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://podcast-app-front.vercel.app/",
   })
 );
 
