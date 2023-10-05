@@ -16,7 +16,8 @@ connect();
 // };
 app.use(
   cors({
-    origin: "https://podcast-app-front.vercel.app/",
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   })
 );
 
