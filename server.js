@@ -16,7 +16,7 @@ connect();
 // };
 app.use(
   cors({
-    origin: "https://podcast-app-fqku.onrender.com",
+    origin: "https://podcast-app-front.vercel.app/",
   })
 );
 
